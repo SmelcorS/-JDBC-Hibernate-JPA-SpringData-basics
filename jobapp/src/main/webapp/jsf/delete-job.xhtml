@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+<ui:include src="/jsf/head.xhtml"/>
+
+<h:body>
+    <div class="container-fluid">
+        <ui:include src="/jsf/guest-navbar.xhtml"/>
+        <main>
+            <hr class="my-3"/>
+            <h1 class="text-center">Delete Job</h1>
+            <hr class="hr-3"/>
+            <h:form class="mx-auto w-15">
+                <div class="form-group">
+                    <div class="label-holder d-flex justify-content-center">
+                        <h:outputLabel for="sector" value="Sector"/>
+                    </div>
+                    <h:inputText value="#{jobDeleteBean.getJob(request.getParameter('id')).sector}"  disabled="true" rendered="true" type="text" class="form-control" id="sector" placeholder="Sector"/>
+                </div>
+                <div class="form-group">
+                    <div class="label-holder d-flex justify-content-center">
+                        <h:outputLabel for="profession" value="Profession"/>
+                    </div>
+                    <h:inputText value="#{jobDeleteBean.getJob(request.getParameter('id')).profession}" disabled="true" type="text" class="form-control" id="profession" placeholder="Profession"/>
+                </div>
+                <div class="form-group">
+                    <div class="label-holder d-flex justify-content-center">
+                        <h:outputLabel for="salary" value="Salary"/>
+                    </div>
+                    <p:inputNumber value="#{jobDeleteBean.getJob(request.getParameter('id')).salary}" disabled="true" class="form-control" id="salary" placeholder="Salary"/>
+                </div>
+                <div class="form-group">
+                    <div class="label-holder d-flex justify-content-center">
+                        <h:outputLabel for="description" value="Description"/>
+                    </div>
+                    <h:inputTextarea value="#{jobDeleteBean.getJob(request.getParameter('id')).description}" disabled="true" class="form-control" id="description" placeholder="Description"/>
+                </div>
+                <input type="hidden" value="${jobDeleteBean.getJob(request.getParameter('id')).id}" name="id"/>
+                <div class="button-holder d-flex justify-content-center">
+                    <h:commandButton action="${jobDeleteBean.delete}" class="btn btn-danger text-white" value="Delete Job"/>
+                </div>
+            </h:form>
+            <hr class="my-3"/>
+        </main>
+        <ui:include src="/jsf/footer.xhtml"/>
+    </div>
+</h:body>
+</html>
